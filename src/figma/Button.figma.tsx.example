@@ -1,0 +1,63 @@
+/*
+ * EXAMPLE Code Connect mapping for the Button component.
+ * ---------------------------------------------------------------------------
+ * ⚠️ NOT ACTIVE. The `.example` suffix keeps it out of the toolchain.
+ * To activate later:
+ *   1. npm install @figma/code-connect
+ *   2. rename this file to Button.figma.tsx
+ *   3. make sure the Figma "Button" component set is PUBLISHED to a library
+ *   4. npx figma connect publish  (with FIGMA_ACCESS_TOKEN set)
+ * ---------------------------------------------------------------------------
+ *
+ * HOW TO READ THIS FILE:
+ *
+ * figma.connect(ReactComponent, figmaComponentUrl, { props, example })
+ *
+ *  - The URL points at the Figma component (the node-id 8-14 is the
+ *    "Button" component set in our NoFilter Cafe file).
+ *  - `props` describes how Figma's design properties translate into
+ *    React props. This is the "dictionary" between design and code.
+ *  - `example` is the snippet developers will see in Dev Mode when they
+ *    click any Button instance. Because it's real JSX referencing our real
+ *    component, it is always valid, always importable, always current.
+ */
+
+// @ts-nocheck -- example file; @figma/code-connect is not installed yet
+import figma from '@figma/code-connect'
+import { Button } from '../components/Button'
+
+figma.connect(
+  Button,
+  // Our real file + the Button component set's node id (8:14 -> 8-14)
+  'https://www.figma.com/design/uHNKt3YrfrvMeHDn1BThJs/NoFilter-Cafe?node-id=8-14',
+  {
+    props: {
+      // Figma VARIANT property "Style" -> React prop `variant`.
+      // Left side: exact Figma variant values. Right side: our prop values.
+      variant: figma.enum('Style', {
+        Primary: 'primary',
+        Secondary: 'secondary',
+        Ghost: 'ghost',
+      }),
+
+      // Figma VARIANT property "Size" -> React prop `size`.
+      size: figma.enum('Size', {
+        Lg: 'lg',
+        Md: 'md',
+      }),
+
+      // Figma TEXT property "Label" -> whatever text the designer typed
+      // into the instance flows straight into the snippet as children.
+      label: figma.string('Label'),
+    },
+
+    // What a developer sees in Dev Mode when selecting a Button instance.
+    // If the designer set Style=Secondary, Size=Md, Label="Sign in",
+    // Dev Mode shows:  <Button variant="secondary" size="md">Sign in</Button>
+    example: ({ variant, size, label }) => (
+      <Button variant={variant} size={size}>
+        {label}
+      </Button>
+    ),
+  },
+)

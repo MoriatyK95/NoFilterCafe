@@ -1,0 +1,132 @@
+/*
+ * ============================================================================
+ * DESIGN TOKENS — "EYEBALLED" VERSION (v1, before Figma Code Connect)
+ * ============================================================================
+ *
+ * HOW THIS FILE WAS "MADE":
+ * The engineer looked at a screenshot of the Figma landing page, zoomed in,
+ * and picked colors/sizes that "looked about right". They never opened
+ * Figma Dev Mode, never saw the variable names, never copied exact values.
+ *
+ * Every token below has a comment showing:
+ *   GUESSED  -> what we shipped (this file)
+ *   FIGMA    -> the real value in the design system (visible in Dev Mode)
+ *
+ * The real Figma file defines these as VARIABLES (design tokens) with
+ * code syntax already attached, e.g. the designer set the variable
+ * `color/bg/brand` to export as `var(--color-bg-brand)`. If we had used
+ * Dev Mode, we could have literally copy-pasted this whole file correctly.
+ * ============================================================================
+ */
+
+:root {
+  /* ---------------------------------------------------------------- */
+  /* COLORS                                                            */
+  /* ---------------------------------------------------------------- */
+
+  /* GUESSED: #FAF6EF   FIGMA: color/bg/page = #FCFAF6 (cream/50)
+     Slightly too yellow — the real page background is a cooler off-white. */
+  --color-bg-page: #FAF6EF;
+
+  /* GUESSED: #FFFFFF   FIGMA: color/bg/surface = #FFFFFF
+     We got this one right — even eyeballing lands sometimes. */
+  --color-bg-surface: #FFFFFF;
+
+  /* GUESSED: #F3EDE3   FIGMA: color/bg/subtle = #F6F0E7 (cream/100)
+     A touch darker/muddier than the real subtle background. */
+  --color-bg-subtle: #F3EDE3;
+
+  /* GUESSED: #3A2A1E   FIGMA: color/bg/brand = #31221A (espresso/800)
+     Our brown is warmer and lighter. Side by side, the real one is
+     noticeably deeper — this changes the whole "premium" feel. */
+  --color-bg-brand: #3A2A1E;
+
+  /* GUESSED: #1C1410   FIGMA: color/bg/inverse = #211711 (espresso/900) */
+  --color-bg-inverse: #1C1410;
+
+  /* GUESSED: #C98A3B   FIGMA: color/bg/accent = #B96F2E (caramel/500)
+     Classic eyeball error: we picked the caramel from a lighter part of a
+     gradient in the screenshot. Ours is brighter/more orange. */
+  --color-accent: #C98A3B;
+
+  /* GUESSED: #F5E9DA   FIGMA: color/bg/accent-subtle = #F7E8D4 (caramel/100) */
+  --color-accent-subtle: #F5E9DA;
+
+  /* GUESSED: #2B1D12   FIGMA: color/text/primary = #211711 (espresso/900)
+     Our text brown is warmer; the real one is nearly-black espresso. */
+  --color-text-primary: #2B1D12;
+
+  /* GUESSED: #8A7060   FIGMA: color/text/secondary = #7A5C48 (espresso/500)
+     Ours is grayer, the real one is a richer coffee tone. */
+  --color-text-secondary: #8A7060;
+
+  /* GUESSED: #FDF9F3   FIGMA: color/text/on-brand = #FCFAF6 (cream/50) */
+  --color-text-on-brand: #FDF9F3;
+
+  /* GUESSED: #E0D5C5   FIGMA: color/border/default = #DFD0B9 (cream/300) */
+  --color-border: #E0D5C5;
+
+  /* GUESSED: #EDB25E   FIGMA: amber/400 = #E3A551 (used for stars/progress) */
+  --color-amber: #EDB25E;
+
+  /* ---------------------------------------------------------------- */
+  /* TYPOGRAPHY                                                        */
+  /* ---------------------------------------------------------------- */
+
+  /* GUESSED: Georgia         FIGMA: "Fraunces" SemiBold
+     Both are serifs, so a screenshot glance says "yeah, serif headline".
+     But Fraunces has distinctive chunky details Georgia doesn't. This is
+     the single most visible mistake on the page. */
+  --font-display: Georgia, 'Times New Roman', serif;
+
+  /* GUESSED: Arial/Helvetica  FIGMA: "Inter"
+     Inter is wider and rounder than Arial at small sizes. */
+  --font-ui: Arial, Helvetica, sans-serif;
+
+  /* GUESSED: 58px   FIGMA: Display/Hero = 64px / 68px line-height */
+  --text-hero-size: 58px;
+  --text-hero-line: 62px;
+
+  /* ---------------------------------------------------------------- */
+  /* RADII                                                             */
+  /* ---------------------------------------------------------------- */
+
+  /* GUESSED: 12px   FIGMA: radius/lg = 16, and cards actually use 20px.
+     Our cards will look subtly "sharper" than the design. */
+  --radius-card: 12px;
+
+  /* GUESSED: 14px   FIGMA: radius/full = 999 (buttons are FULL PILLS!)
+     This is the easiest mismatch to spot: design = pill, ours = rounded
+     rectangle. An engineer glancing at a small screenshot missed it. */
+  --radius-button: 14px;
+
+  /* GUESSED: 10px   FIGMA: radius/md = 12 (card image wells use 14) */
+  --radius-inner: 10px;
+
+  /* ---------------------------------------------------------------- */
+  /* SPACING — Figma uses a strict 4px scale: 4/8/12/16/20/24/32/48/64 */
+  /* ---------------------------------------------------------------- */
+
+  /* GUESSED: 60px   FIGMA: section side padding = 80px (spacing/4xl + md)
+     Everything hugs the edges a bit more than the design intends. */
+  --space-section-x: 60px;
+
+  /* GUESSED: 18px   FIGMA: 24px gaps between cards (spacing/xl)
+     18 isn't even on the 4px scale — a real design-system value
+     would never be 18. Dead giveaway of an eyeballed build. */
+  --space-card-gap: 18px;
+
+  /* ---------------------------------------------------------------- */
+  /* SHADOWS                                                           */
+  /* ---------------------------------------------------------------- */
+
+  /* GUESSED: plain gray/black shadow
+     FIGMA:   shadow/card = two layered shadows TINTED WARM BROWN
+              (0 2 8 rgba(33,23,17,0.06) + 0 8 24 -4 rgba(33,23,17,0.04))
+     Gray shadows on a cream page look slightly "dirty" compared to the
+     design's warm shadows. Very common eyeball miss. */
+  --shadow-card: 0 2px 6px rgba(0, 0, 0, 0.08);
+
+  /* GUESSED single gray shadow  FIGMA: shadow/float = 2 layered warm shadows */
+  --shadow-float: 0 10px 24px rgba(0, 0, 0, 0.14);
+}

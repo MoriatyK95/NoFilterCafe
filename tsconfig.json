@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+    /*
+     * LATER (Code Connect step): when we install @figma/code-connect we will
+     * add its types here so .figma.ts template files get autocomplete:
+     *
+     *   "types": ["@figma/code-connect/figma-types"]
+     */
+  },
+  "include": ["src"]
+}
