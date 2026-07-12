@@ -18,15 +18,17 @@
  *   Size=Lg                 ->  size="lg"
  *   Label (text property)   ->  children
  *
- * When we eventually write Button.figma.tsx, the mapping will be a few
- * lines because the shapes already match. If our props were named
- * something unrelated (e.g. `kind="dark"` / `big={true}`), the mapping
- * would still be possible but confusing forever.
+ * The Code Connect mapping lives in src/figma/Button.figma.tsx and is a few
+ * lines because the shapes already match. If our props were named something
+ * unrelated (e.g. `kind="dark"` / `big={true}`), the mapping would still be
+ * possible but confusing forever.
  *
- * WHAT'S WRONG IN THIS VERSION (eyeballed, see global.css for details):
- *   - shape:  rounded rectangle (14px). Figma buttons are FULL PILLS.
- *   - height: 50px / 42px. Figma is 56px / 44px.
- *   - weight: font-weight 700. Figma uses Inter Semi Bold (600).
+ * MATCHED TO FIGMA (Dev Mode values, see global.css / tokens.css):
+ *   - shape:  FULL PILL (radius/full = 999).
+ *   - height: Lg = 56px, Md = 44px.
+ *   - padding: Lg = 28px, Md = 20px side padding.
+ *   - weight: Inter Semi Bold (600).
+ *   - secondary: 1.5px stroke in color/border/strong (#31221A).
  */
 
 import type { ReactNode } from 'react'

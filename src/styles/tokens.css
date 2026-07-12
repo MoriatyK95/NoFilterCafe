@@ -66,6 +66,10 @@
   /* GUESSED: #E0D5C5   FIGMA: color/border/default = #DFD0B9 (cream/300) */
   --color-border: #E0D5C5;
 
+  /* FIGMA: color/border/strong = #31221A (espresso/800)
+     Used by the Secondary button's 1.5px stroke. Pulled straight from Dev Mode. */
+  --color-border-strong: #31221A;
+
   /* GUESSED: #EDB25E   FIGMA: amber/400 = #E3A551 (used for stars/progress) */
   --color-amber: #EDB25E;
 
@@ -95,10 +99,9 @@
      Our cards will look subtly "sharper" than the design. */
   --radius-card: 12px;
 
-  /* GUESSED: 14px   FIGMA: radius/full = 999 (buttons are FULL PILLS!)
-     This is the easiest mismatch to spot: design = pill, ours = rounded
-     rectangle. An engineer glancing at a small screenshot missed it. */
-  --radius-button: 14px;
+  /* FIGMA: radius/full = 999 (buttons are FULL PILLS).
+     Fixed from the eyeballed 14px after reading Dev Mode — buttons are pills. */
+  --radius-button: 999px;
 
   /* GUESSED: 10px   FIGMA: radius/md = 12 (card image wells use 14) */
   --radius-inner: 10px;

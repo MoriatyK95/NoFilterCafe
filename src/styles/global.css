@@ -76,28 +76,28 @@ h1, h2, h3, .display {
   border: none;
   cursor: pointer;
   font-family: var(--font-ui);
-  font-weight: 700; /* ⚠️ EYEBALL: Figma uses Inter Semi Bold (600), we guessed bold (700) */
-  /* ⚠️ EYEBALL: rounded rectangle — Figma buttons are FULL PILLS (radius 999) */
+  font-weight: 600; /* Figma: Inter Semi Bold (600) */
+  /* Figma: FULL PILL (radius/full = 999) */
   border-radius: var(--radius-button);
   background: transparent;
 }
 .btn--lg {
-  height: 50px;      /* ⚠️ EYEBALL: Figma Lg = 56px */
-  padding: 0 24px;   /* ⚠️ EYEBALL: Figma Lg = 28px side padding */
-  font-size: 16px;   /* correct! */
+  height: 56px;      /* Figma: Lg = 56px */
+  padding: 0 28px;   /* Figma: Lg = 28px side padding */
+  font-size: 16px;
 }
 .btn--md {
-  height: 42px;      /* ⚠️ EYEBALL: Figma Md = 44px */
-  padding: 0 18px;   /* ⚠️ EYEBALL: Figma Md = 20px side padding */
-  font-size: 14px;   /* correct! */
+  height: 44px;      /* Figma: Md = 44px */
+  padding: 0 20px;   /* Figma: Md = 20px side padding */
+  font-size: 14px;
 }
 .btn--primary {
-  background: var(--color-bg-brand); /* color itself is also slightly off (see tokens.css) */
+  background: var(--color-bg-brand);
   color: var(--color-text-on-brand);
 }
 .btn--secondary {
-  /* ⚠️ EYEBALL: 1px border — Figma Secondary uses a 1.5px stroke */
-  border: 1px solid var(--color-text-primary);
+  /* Figma: Secondary uses a 1.5px stroke in color/border/strong */
+  border: 1.5px solid var(--color-border-strong);
   color: var(--color-text-primary);
 }
 .btn--ghost {
