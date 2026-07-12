@@ -1,0 +1,426 @@
+/*
+ * Global styles + all component/section classes for the eyeballed build.
+ * Kept in one plain CSS file so the lesson is easy to follow — no CSS-in-JS,
+ * no Tailwind, just classes that read like the Figma layer names.
+ */
+
+@import './tokens.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings use the (wrongly guessed) display serif everywhere */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.page {
+  /* Figma frame is exactly 1440 wide; we let it be fluid but cap it */
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ============================== NAVBAR ============================== */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* ⚠️ EYEBALL: 60px side padding — Figma uses 80px */
+  padding: 18px var(--space-section-x);
+}
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 24px; /* ⚠️ EYEBALL: Figma logo text is 26px */
+  font-weight: 600;
+}
+.nav__links {
+  display: flex;
+  gap: 30px; /* ⚠️ EYEBALL: Figma link gap is 36px */
+  font-size: 15px;
+}
+.nav__links a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.nav__actions {
+  display: flex;
+  gap: 10px; /* ⚠️ EYEBALL: Figma is 12px */
+}
+
+/* ============================== BUTTON ============================== */
+/*
+ * The Figma "Button" component set has variants:
+ *   Style = Primary | Secondary | Ghost
+ *   Size  = Lg (56px tall, 28px side padding) | Md (44px tall, 20px)
+ * and one TEXT property: "Label".
+ *
+ * Our CSS classes mirror those variants on purpose (btn--primary etc.)
+ * so that when we hook up Code Connect later, the mapping is obvious.
+ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-weight: 600; /* Figma: Inter Semi Bold (600) */
+  /* Figma: FULL PILL (radius/full = 999) */
+  border-radius: var(--radius-button);
+  background: transparent;
+}
+.btn--lg {
+  height: 56px;      /* Figma: Lg = 56px */
+  padding: 0 28px;   /* Figma: Lg = 28px side padding */
+  font-size: 16px;
+}
+.btn--md {
+  height: 44px;      /* Figma: Md = 44px */
+  padding: 0 20px;   /* Figma: Md = 20px side padding */
+  font-size: 14px;
+}
+.btn--primary {
+  background: var(--color-bg-brand);
+  color: var(--color-text-on-brand);
+}
+.btn--secondary {
+  /* Figma: Secondary uses a 1.5px stroke in color/border/strong */
+  border: 1.5px solid var(--color-border-strong);
+  color: var(--color-text-primary);
+}
+.btn--ghost {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-primary);
+}
+
+/* ============================== CHIP ================================ */
+/* Figma "Chip" component: State = Default | Selected, 38px tall pills. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 34px;         /* ⚠️ EYEBALL: Figma chips are 38px tall */
+  padding: 0 14px;      /* ⚠️ EYEBALL: Figma is 18px */
+  border-radius: 999px; /* got the pill right here, ironically not on buttons */
+  font-size: 13px;      /* ⚠️ EYEBALL: Figma is 14px */
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+.chip--selected {
+  background: var(--color-bg-inverse);
+  color: var(--color-text-on-brand);
+  border-color: transparent;
+  font-weight: 700; /* ⚠️ EYEBALL: Figma selected chips are Semi Bold (600) */
+}
+
+/* ============================== HERO ================================ */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 48px; /* ⚠️ EYEBALL: Figma hero gap is 60px */
+  padding: 40px var(--space-section-x) 64px; /* ⚠️ EYEBALL: Figma is 48px top, 72px bottom */
+}
+.hero__copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px; /* ⚠️ EYEBALL: Figma stacks hero copy with 24px gaps */
+}
+.hero__eyebrow {
+  display: inline-flex;
+  padding: 6px 12px; /* ⚠️ EYEBALL: Figma is 7px 14px */
+  border-radius: 999px;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px; /* ⚠️ EYEBALL: Figma overline letter-spacing is 1.2px */
+  text-transform: uppercase;
+}
+.hero__title {
+  font-size: var(--text-hero-size);   /* ⚠️ 58px vs Figma 64px */
+  line-height: var(--text-hero-line); /* ⚠️ 62px vs Figma 68px */
+}
+.hero__sub {
+  font-size: 16px;   /* ⚠️ EYEBALL: Figma body-lg here is 17px */
+  line-height: 25px; /* ⚠️ EYEBALL: Figma is 27px */
+  color: var(--color-text-secondary);
+  max-width: 520px;
+}
+.hero__ctas {
+  display: flex;
+  gap: 12px; /* ⚠️ EYEBALL: Figma is 14px */
+}
+.hero__proof {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+.hero__visual {
+  position: relative;
+  width: 520px;  /* ⚠️ EYEBALL: Figma visual frame is 560px */
+  height: 460px;
+  flex-shrink: 0;
+}
+.hero__blob {
+  position: absolute;
+  /* ⚠️ EYEBALL: blob is 400px and roughly centered — Figma: 440px at x=60,y=20 */
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: #EADFCB; /* ⚠️ EYEBALL: Figma cream/200 = #EDE3D3 */
+  left: 70px;
+  top: 30px;
+}
+.hero__cup {
+  position: absolute;
+  left: 175px; /* ⚠️ EYEBALL: nudged by eye; Figma places it at 168,90 */
+  top: 80px;
+}
+.float-card {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: var(--radius-card); /* ⚠️ EYEBALL: Figma float cards use 16px */
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-float);
+  font-size: 13px;
+}
+.float-card--dark {
+  background: var(--color-bg-brand);
+  color: var(--color-text-on-brand);
+}
+.float-card__title { font-weight: 700; font-size: 14px; }
+.float-card__sub { color: var(--color-text-secondary); font-size: 12px; }
+
+/* =========================== VALUE PROPS ============================ */
+.value-props {
+  display: flex;
+  gap: var(--space-card-gap); /* ⚠️ 18px vs Figma 24px */
+  padding: 0 var(--space-section-x) 64px; /* ⚠️ Figma bottom is 72px */
+}
+.prop-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* ⚠️ EYEBALL: Figma is 12px */
+  padding: 22px; /* ⚠️ EYEBALL: Figma is 26px top/bottom, 24px sides */
+  border-radius: var(--radius-card); /* ⚠️ 12px vs Figma 20px */
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-card);
+}
+.prop-card__icon {
+  width: 44px;  /* ⚠️ EYEBALL: Figma icon wells are 48px */
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-inner);
+  background: var(--color-accent-subtle);
+  font-size: 20px;
+}
+.prop-card__title { font-size: 19px; } /* ⚠️ EYEBALL: Figma Heading/Md-ish is 20px */
+.prop-card__body {
+  font-size: 14px;
+  line-height: 21px; /* ⚠️ EYEBALL: Figma body is 14.5/22 */
+  color: var(--color-text-secondary);
+}
+
+/* =========================== SECTION HEADS ========================== */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-section-x);
+  margin-bottom: 24px; /* ⚠️ EYEBALL: Figma gap to the cards is 28px */
+}
+.section-head__title { font-size: 33px; } /* ⚠️ EYEBALL: Figma Heading is 36px */
+.section-head__sub {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+/* =========================== PRODUCT CARDS ========================== */
+.card-row {
+  display: flex;
+  gap: var(--space-card-gap);
+  padding: 0 var(--space-section-x) 72px; /* ⚠️ EYEBALL: Figma is 80px */
+}
+
+/* Figma "DrinkCard" component — props: Name, Subtitle, Price, Visual(swap) */
+.drink-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* ⚠️ EYEBALL: Figma is 12px */
+  padding: 12px 12px 14px;
+  border-radius: var(--radius-card); /* ⚠️ 12px vs Figma 20px */
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-card);
+}
+.drink-card__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0; /* ⚠️ EYEBALL: Figma visual wells use 14px */
+  border-radius: var(--radius-inner);
+  background: var(--color-bg-subtle);
+}
+.drink-card__name { font-family: var(--font-ui); font-weight: 700; font-size: 15px; }
+.drink-card__sub { font-size: 12px; color: var(--color-text-secondary); }
+.drink-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drink-card__price {
+  font-family: var(--font-display);
+  font-size: 16px; /* ⚠️ EYEBALL: Figma price is Fraunces 17px */
+}
+.drink-card__add {
+  width: 30px;  /* ⚠️ EYEBALL: Figma add button is 32px */
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: var(--color-bg-brand);
+  color: var(--color-text-on-brand);
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Figma "BeanCard" component — props: Name, Notes, Price, Roast */
+.bean-card__roast {
+  align-self: flex-start;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px; /* ⚠️ EYEBALL: Figma is 0.5px */
+  text-transform: uppercase;
+}
+.bean-card__unit { font-family: var(--font-ui); font-size: 11px; color: var(--color-text-secondary); }
+
+/* =========================== BEANS SECTION ========================== */
+.beans {
+  display: flex;
+  align-items: center;
+  gap: 48px; /* ⚠️ EYEBALL: Figma is 56px */
+  padding: 64px var(--space-section-x); /* ⚠️ EYEBALL: Figma is 72px top/bottom, 80px sides */
+  background: var(--color-bg-brand);
+  color: var(--color-text-on-brand);
+}
+.beans__eyebrow {
+  color: var(--color-amber);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px; /* ⚠️ EYEBALL: Figma is 1.4px */
+  text-transform: uppercase;
+}
+.beans__title {
+  margin: 14px 0;
+  font-size: 38px;   /* ⚠️ EYEBALL: Figma is 40px */
+  line-height: 46px; /* ⚠️ EYEBALL: Figma is 48px */
+}
+.beans__sub {
+  max-width: 560px;
+  font-size: 16px;
+  line-height: 24px; /* ⚠️ EYEBALL: Figma is 25px */
+  opacity: 0.7;      /* ⚠️ EYEBALL: Figma is 0.75 */
+  margin-bottom: 20px;
+}
+.btn--inverse {
+  background: var(--color-text-on-brand);
+  color: var(--color-text-primary);
+}
+.beans__bags {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* ⚠️ EYEBALL: Figma is 20px */
+}
+.beans__bag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; /* ⚠️ EYEBALL: Figma is 10px */
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ============================ APP BANNER ============================ */
+.app-banner {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* ⚠️ EYEBALL: Figma is 48px */
+  padding: 56px var(--space-section-x); /* ⚠️ EYEBALL: Figma is 64px top/bottom */
+}
+.app-banner__copy { flex: 1; }
+.app-banner__title { font-size: 33px; margin-bottom: 12px; } /* ⚠️ Figma: 36px / 14px gap */
+.app-banner__sub {
+  font-size: 15px;
+  line-height: 23px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+.store-badges { display: flex; gap: 10px; } /* ⚠️ EYEBALL: Figma is 12px */
+.store-badge {
+  padding: 11px 16px; /* ⚠️ EYEBALL: Figma is 12px 18px */
+  border-radius: var(--radius-inner); /* ⚠️ EYEBALL: Figma badges use 12px */
+  background: var(--color-bg-inverse);
+  color: var(--color-text-on-brand);
+  font-size: 14px;
+  font-weight: 700;
+}
+.qr-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 26px; /* ⚠️ EYEBALL: Figma is 24px 28px */
+  border-radius: var(--radius-card); /* ⚠️ Figma: 20px */
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+/* ============================== FOOTER ============================== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 36px var(--space-section-x) 44px; /* ⚠️ EYEBALL: Figma is 40px top, 48px bottom */
+  background: var(--color-bg-inverse);
+  color: var(--color-text-on-brand);
+}
+.footer__brand { font-family: var(--font-display); font-size: 21px; } /* ⚠️ Figma: 22px */
+.footer__tag { margin-top: 8px; font-size: 13px; opacity: 0.6; }
+.footer__cols { display: flex; gap: 56px; } /* ⚠️ EYEBALL: Figma is 64px */
+.footer__col { display: flex; flex-direction: column; gap: 9px; font-size: 14px; }
+.footer__col-head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+.footer__col a { color: inherit; opacity: 0.85; text-decoration: none; }

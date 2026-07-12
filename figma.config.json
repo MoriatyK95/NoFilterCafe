@@ -1,0 +1,9 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": ["src/figma/**/*.figma.tsx"],
+    "documentUrlSubstitutions": {
+      "<FIGMA_FILE>": "https://www.figma.com/design/uHNKt3YrfrvMeHDn1BThJs"
+    }
+  }
+}

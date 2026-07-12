@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoFilter Cafe — eyeballed build (v1)</title>
+    <!--
+      ⚠️ EYEBALL MISTAKE #1 (typography):
+      The Figma design uses two specific fonts:
+        - "Fraunces" (SemiBold) for all headings  -> warm, artisanal serif
+        - "Inter" for all UI text                 -> clean geometric sans
+      This first attempt never checked Dev Mode, so we load NOTHING and
+      fall back to Georgia (a different serif) and Arial (a different sans).
+      Close enough to fool a quick glance... but not the same fonts at all.
+    -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
